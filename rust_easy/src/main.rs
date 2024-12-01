@@ -77,4 +77,23 @@ fn main() {
     let doesnt_print = ();
     println!("This will not print: {:?}", doesnt_print); // ⚠️
     
+    // 可变性
+    let my_number = 8;
+    my_number = 10; // error
+    let mut my_number = 8;
+    my_number = 10; // √
+    // 但是不能改变类型
+    let mut my_number = 8;
+    my_number = "hello"; // error
+
+    // 隐藏
+   let x = 1; // 不是销毁了，而是被隐藏了
+   let x = "hello";
+   println!("{x}");
+   
+   let x2 = 1; // 不在同一个代码块，没有被隐藏
+   {
+    let x2 = "hello";
+   }
+   println!("{x2}");
 }
