@@ -26,6 +26,17 @@ fn main() {
     println!("{my_number2}");
     println!("{my_number3}");
     println!("{my_number4}");
+    // 最大值 最小值
+    println!("The smallest i8 is {} and the biggest i8 is {}.", i8::MIN, i8::MAX); // hint: printing std::i8::MIN means "print MIN inside of the i8 section in the standard library"
+    println!("The smallest u8 is {} and the biggest u8 is {}.", u8::MIN, u8::MAX);
+    println!("The smallest i16 is {} and the biggest i16 is {}.", i16::MIN, i16::MAX);
+    println!("The smallest u16 is {} and the biggest u16 is {}.", u16::MIN, u16::MAX);
+    println!("The smallest i32 is {} and the biggest i32 is {}.", i32::MIN, i32::MAX);
+    println!("The smallest u32 is {} and the biggest u32 is {}.", u32::MIN, u32::MAX);
+    println!("The smallest i64 is {} and the biggest i64 is {}.", i64::MIN, i64::MAX);
+    println!("The smallest u64 is {} and the biggest u64 is {}.", u64::MIN, u64::MAX);
+    println!("The smallest i128 is {} and the biggest i128 is {}.", i128::MIN, i128::MAX);
+    println!("The smallest u128 is {} and the biggest u128 is {}.", u128::MIN, u128::MAX);
 
     // 浮点数
     // 5.5 5.0 5. 是浮点数
@@ -34,4 +45,36 @@ fn main() {
     let my_other_float: f32 = 5.5;
     // f32 f64类型不同  不能相加
     let _r = my_float + my_other_float;
+
+     // println是一个宏  后面使用！表示是一个宏
+    // {}表示把变量放在这里
+    println!("Hello, worlds number {} and {}!", 8, 9);
+    // -> 表示函数返回值类型
+    fn number() -> i32 {
+        8
+    }
+    println!("Hello, world number {}!", number());
+    // 变量名:类型
+    fn multiply(number_one: i32, number_two: i32) -> i32 {
+        // Two i32s will enter the function. We will call them number_one and number_two.
+        let result = number_one * number_two;
+        println!("{} times {} is {}", number_one, number_two, result);
+        result
+    }
+    let multiply_result = multiply(8, 9);
+    println!("multiply_result {}!", multiply(5, 6));
+
+     // 定义变量和代码块
+     {
+        // 变量的使用范围是在代码块中结束的
+        let my_number = 8;
+        println!("Hello, number {}", my_number);
+    }
+    // 这里找不到my_number
+    // println!("Hello, number {:?}", my_number);
+    
+    // 打印调试 某些类型是不能打印的 如() 添加:? 即可打印
+    let doesnt_print = ();
+    println!("This will not print: {:?}", doesnt_print); // ⚠️
+    
 }
