@@ -96,4 +96,32 @@ fn main() {
     let x2 = "hello";
    }
    println!("{x2}");
+
+   // 堆，栈和指针
+   let my_variable = 8; // makes a regular variable, but
+   // 引用只是查看数据，所有权还是在my_variable
+   let my_reference = &my_variable; // makes a reference.
+
+   // 可变引用
+   let mut my_number = 8;
+   my_number += 10; // 这里ok的
+   let num_ref = &mut my_number;
+   // num_ref += 10; // error 因为num_ref 是&i32;
+   // 如果我们想要获取值 使用*号   *与&相反
+   // &叫做refrencing  *叫做 derefrencing
+   *num_ref += 10;
+   println!("{my_number}");
+   
+   // 关于可变引用和不可变引用
+   // 如果您只有不可变引用，则可以拥有任意数量的引用。 1 可以，3 可以，1000 可以。没问题
+   // 如果您有一个可变引用，那么就只能有一个, 并且不能同时使用不可变引用和可变引用
+   
+   // 这个也很好理解，因为如果允许同时读写，就会出现竞争问题
+   
+   let mut number = 10;
+   let number_change = &mut number; // create a mutable reference
+   *number_change += 10; // use mutable reference to add 10
+   let number_ref = &number; // create an immutable reference
+   // *number_change += 10; // 这里如果不在使用和修改number_change 编译器就不会报错了
+   println!("{}", number_ref); // print the immutable reference
 }
