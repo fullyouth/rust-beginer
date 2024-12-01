@@ -15,4 +15,23 @@ fn main() {
     println!("Size of string containing 'ß': {}", "ß".len());
     println!("Size of string containing '国': {}", "国".len());
     println!("Size of string containing '𓅱': {}", "𓅱".len());
+
+    // 类型推断
+    // 编译器可以自动推断
+    let _my_number: u8 = 8;
+    // 对于数字 可以把类型放在数字后面 也可以使用下划线
+    let my_number2 = 8u8;
+    let my_number3 = 8_u8;
+    let my_number4 = 8_________u8;
+    println!("{my_number2}");
+    println!("{my_number3}");
+    println!("{my_number4}");
+
+    // 浮点数
+    // 5.5 5.0 5. 是浮点数
+    let my_float: f64 = 5.0;
+    // 浮点数类型 f32 f64;  
+    let my_other_float: f32 = 5.5;
+    // f32 f64类型不同  不能相加
+    let _r = my_float + my_other_float;
 }
