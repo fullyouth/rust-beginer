@@ -3,7 +3,7 @@ fn main() {
     // 有符号整数为： i8 、 i16 、 i32 、 i64 、 i128和isize 。
     // 无符号整数为： u8 、 u16 、 u32 、 u64 、 u128和usize 。
     // u64: 0 ~ 2^64 - 1
-    // i64: -2^63 至 2^63 - 1 
+    // i64: -2^63 至 2^63 - 1
     // char 使用 单引号 '' 所有的chars都使用4个字节的内存
     let my_number = 1000000;
     println!("{}", my_number as isize);
@@ -27,26 +27,66 @@ fn main() {
     println!("{my_number3}");
     println!("{my_number4}");
     // 最大值 最小值
-    println!("The smallest i8 is {} and the biggest i8 is {}.", i8::MIN, i8::MAX); // hint: printing std::i8::MIN means "print MIN inside of the i8 section in the standard library"
-    println!("The smallest u8 is {} and the biggest u8 is {}.", u8::MIN, u8::MAX);
-    println!("The smallest i16 is {} and the biggest i16 is {}.", i16::MIN, i16::MAX);
-    println!("The smallest u16 is {} and the biggest u16 is {}.", u16::MIN, u16::MAX);
-    println!("The smallest i32 is {} and the biggest i32 is {}.", i32::MIN, i32::MAX);
-    println!("The smallest u32 is {} and the biggest u32 is {}.", u32::MIN, u32::MAX);
-    println!("The smallest i64 is {} and the biggest i64 is {}.", i64::MIN, i64::MAX);
-    println!("The smallest u64 is {} and the biggest u64 is {}.", u64::MIN, u64::MAX);
-    println!("The smallest i128 is {} and the biggest i128 is {}.", i128::MIN, i128::MAX);
-    println!("The smallest u128 is {} and the biggest u128 is {}.", u128::MIN, u128::MAX);
+    println!(
+        "The smallest i8 is {} and the biggest i8 is {}.",
+        i8::MIN,
+        i8::MAX
+    ); // hint: printing std::i8::MIN means "print MIN inside of the i8 section in the standard library"
+    println!(
+        "The smallest u8 is {} and the biggest u8 is {}.",
+        u8::MIN,
+        u8::MAX
+    );
+    println!(
+        "The smallest i16 is {} and the biggest i16 is {}.",
+        i16::MIN,
+        i16::MAX
+    );
+    println!(
+        "The smallest u16 is {} and the biggest u16 is {}.",
+        u16::MIN,
+        u16::MAX
+    );
+    println!(
+        "The smallest i32 is {} and the biggest i32 is {}.",
+        i32::MIN,
+        i32::MAX
+    );
+    println!(
+        "The smallest u32 is {} and the biggest u32 is {}.",
+        u32::MIN,
+        u32::MAX
+    );
+    println!(
+        "The smallest i64 is {} and the biggest i64 is {}.",
+        i64::MIN,
+        i64::MAX
+    );
+    println!(
+        "The smallest u64 is {} and the biggest u64 is {}.",
+        u64::MIN,
+        u64::MAX
+    );
+    println!(
+        "The smallest i128 is {} and the biggest i128 is {}.",
+        i128::MIN,
+        i128::MAX
+    );
+    println!(
+        "The smallest u128 is {} and the biggest u128 is {}.",
+        u128::MIN,
+        u128::MAX
+    );
 
     // 浮点数
     // 5.5 5.0 5. 是浮点数
     let my_float: f64 = 5.0;
-    // 浮点数类型 f32 f64;  
+    // 浮点数类型 f32 f64;
     let my_other_float: f32 = 5.5;
     // f32 f64类型不同  不能相加
     let _r = my_float + my_other_float;
 
-     // println是一个宏  后面使用！表示是一个宏
+    // println是一个宏  后面使用！表示是一个宏
     // {}表示把变量放在这里
     println!("Hello, worlds number {} and {}!", 8, 9);
     // -> 表示函数返回值类型
@@ -64,64 +104,122 @@ fn main() {
     let multiply_result = multiply(8, 9);
     println!("multiply_result {}!", multiply(5, 6));
 
-     // 定义变量和代码块
-     {
+    // 定义变量和代码块
+    {
         // 变量的使用范围是在代码块中结束的
         let my_number = 8;
         println!("Hello, number {}", my_number);
     }
     // 这里找不到my_number
     // println!("Hello, number {:?}", my_number);
-    
+
     // 打印调试 某些类型是不能打印的 如() 添加:? 即可打印
     let doesnt_print = ();
     println!("This will not print: {:?}", doesnt_print); // ⚠️
-    
+
     // 可变性
     let my_number = 8;
     my_number = 10; // error
     let mut my_number = 8;
     my_number = 10; // √
-    // 但是不能改变类型
+                    // 但是不能改变类型
     let mut my_number = 8;
     my_number = "hello"; // error
 
     // 隐藏
-   let x = 1; // 不是销毁了，而是被隐藏了
-   let x = "hello";
-   println!("{x}");
-   
-   let x2 = 1; // 不在同一个代码块，没有被隐藏
-   {
-    let x2 = "hello";
-   }
-   println!("{x2}");
+    let x = 1; // 不是销毁了，而是被隐藏了
+    let x = "hello";
+    println!("{x}");
 
-   // 堆，栈和指针
-   let my_variable = 8; // makes a regular variable, but
-   // 引用只是查看数据，所有权还是在my_variable
-   let my_reference = &my_variable; // makes a reference.
+    let x2 = 1; // 不在同一个代码块，没有被隐藏
+    {
+        let x2 = "hello";
+    }
+    println!("{x2}");
 
-   // 可变引用
-   let mut my_number = 8;
-   my_number += 10; // 这里ok的
-   let num_ref = &mut my_number;
-   // num_ref += 10; // error 因为num_ref 是&i32;
-   // 如果我们想要获取值 使用*号   *与&相反
-   // &叫做refrencing  *叫做 derefrencing
-   *num_ref += 10;
-   println!("{my_number}");
-   
-   // 关于可变引用和不可变引用
-   // 如果您只有不可变引用，则可以拥有任意数量的引用。 1 可以，3 可以，1000 可以。没问题
-   // 如果您有一个可变引用，那么就只能有一个, 并且不能同时使用不可变引用和可变引用
-   
-   // 这个也很好理解，因为如果允许同时读写，就会出现竞争问题
-   
-   let mut number = 10;
-   let number_change = &mut number; // create a mutable reference
-   *number_change += 10; // use mutable reference to add 10
-   let number_ref = &number; // create an immutable reference
-   // *number_change += 10; // 这里如果不在使用和修改number_change 编译器就不会报错了
-   println!("{}", number_ref); // print the immutable reference
+    // 堆，栈和指针
+    let my_variable = 8; // makes a regular variable, but
+                         // 引用只是查看数据，所有权还是在my_variable
+    let my_reference = &my_variable; // makes a reference.
+
+    // 可变引用
+    let mut my_number = 8;
+    my_number += 10; // 这里ok的
+    let num_ref = &mut my_number;
+    // num_ref += 10; // error 因为num_ref 是&i32;
+    // 如果我们想要获取值 使用*号   *与&相反
+    // &叫做refrencing  *叫做 derefrencing
+    *num_ref += 10;
+    println!("{my_number}");
+
+    // 关于可变引用和不可变引用
+    // 如果您只有不可变引用，则可以拥有任意数量的引用。 1 可以，3 可以，1000 可以。没问题
+    // 如果您有一个可变引用，那么就只能有一个, 并且不能同时使用不可变引用和可变引用
+
+    // 这个也很好理解，因为如果允许同时读写，就会出现竞争问题
+
+    let mut number = 10;
+    let number_change = &mut number; // create a mutable reference
+    *number_change += 10; // use mutable reference to add 10
+    let number_ref = &number; // create an immutable reference
+                              // *number_change += 10; // 这里如果不在使用和修改number_change 编译器就不会报错了
+    println!("{}", number_ref); // print the immutable reference
+
+    // 同时使用引用和隐藏
+    let country = String::from("China");
+    let country_ref = &country;
+    let country = 8; // 隐藏了上一个country 但是并没有销毁 但是堆中的数据还是存在的
+    println!("{}, {}", country_ref, country);
+
+    // 为函数传递引用
+    let country = String::from("China");
+    print_country(country); // 这里直接把所有权给了print_country
+                            // print_country(country); // error
+    fn print_country(country_name: String) {
+        println!("country_name");
+    };
+
+    // 可以改进
+    let country2 = String::from("Austria");
+    let country2 = print_country2(country2); // 重新返回一个值
+    print_country2(country2);
+
+    fn print_country2(country_name: String) -> String {
+        println!("{}", country_name);
+        country_name // return it here
+    };
+
+    // 借用
+    // 你可以读它，但是country3保留所有权
+    let country3 = String::from("Austria");
+    print_country3(&country3); // We print "Austria"
+    print_country3(&country3); // 可以继续借用
+    fn print_country3(country_name: &String) {
+        println!("{}", country_name);
+    };
+
+    // 可写
+    let country4 = String::from("Austria");
+    adds_hungary4(country4);
+    fn adds_hungary4(mut country: String) {
+        //当调用adds_hungary那一刻，它就成为了完整的所有者。 country与String::from("Austria")不再有任何关系，所以这里可以改变它
+        country.push_str("-Hungary");
+        println!("{}", country);
+    }
+    println!("{}", country4); // error
+
+    // 可写
+    let mut country5 = String::from("Austria");
+    adds_hungary5(&mut country5);
+    println!("{}", country5);
+
+    fn adds_hungary5(country: &mut String) {
+        //借用一个String并且可以改变它
+        country.push_str("-Hungary");
+        println!("{}", country);
+    };
+
+    // fn function_name(variable: String) 获取一个String并拥有它。如果它不返回任何内容，则该变量将在函数内消失。
+    // fn function_name(variable: &String) 借用一个String并可以查看它
+    // fn function_name(variable: &mut String) 借用一个String并且可以改变它
 }
